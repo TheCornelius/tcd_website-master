@@ -59,8 +59,8 @@ resume_link: https://resumetcd.herokuapp.com
         <div class="employers-div">
             <h3>Participating Employers</h3> {% for image in site.static_files %} {% if image.path contains 'images/current-employers' %}
             <div>
-                {% assign word = image.path | split: "-" %} {% if word[2] %}
-                <a href="http://{{ word[2] }}" target="_blank">
+                {% assign word = image.path | split: "-" | shift | shift | pop | join: "-" %} {% if word %}
+                <a href="http://{{ word }}" target="_blank">
                     <img src="{{ image.path }}" alt="participating-employers">
                 </a>
                 {%else%}
